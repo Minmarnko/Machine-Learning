@@ -1,0 +1,11 @@
+services:
+  app:
+    image: minmarn/st125437-a3
+    ports:
+      - "8501:8501"
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    # volumes:
+      # - .:/app
+    # command: streamlit run ./app.py

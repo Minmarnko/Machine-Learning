@@ -1,0 +1,11 @@
+services:
+  app:
+    image: st12543_ml_assignment2
+    ports:
+      - "8501:8501"
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    volumes:
+      - .:/app
+    command: streamlit run ./app.py

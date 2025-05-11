@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  streamlit:
+    # This command will run the Streamlit app (replace 'app.py' with your file)
+    command: streamlit run app.py --server.port 80 --server.address 0.0.0.0
+    # Use your Docker image here (replace with your Streamlit image if needed)
+    image: minmarn/st125437_ml_assignment2	
+    # For MAC M1 user
+    platform: linux/x86_64
+    # Environment variables (Streamlit specific)
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+    # Labels for Traefik routing
+    labels:
+      # Enable Traefik to communicate with the Streamlit service
+      - traefik.enable=true
+      # Traefik listens on port 80 for HTTP requests
+      - traefik.http.services.streamlit-web-st125437.loadbalancer.server.port=80
+      # Optionally configure the domain name
+      - traefik.http.routers.streamlit-web-st125437.rule=Host(`web-st125437.ml2023.cs.ait.ac.th`)
+      # Enable SSL
+      - traefik.http.routers.streamlit-web-st125437.tls=true
+      - traefik.http.routers.streamlit-web-st125437.tls.certresolver=production
+      - traefik.http.routers.streamlit-web-st125437.entrypoints=websecure
+    # Network configuration
+    networks:
+      - default
+      - traefik_default
+
+networks:
+  default:
+  traefik_default:
+    external: true

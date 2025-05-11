@@ -1,0 +1,13 @@
+services:
+  app:
+    image: website:0.0.1
+    ports:
+      - "8501:8501"
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    volumes:
+      - ./code:/root/code
+      - ./.vscode-server:/root/.vscode-server
+    command: streamlit run ./Web_App.py
+    

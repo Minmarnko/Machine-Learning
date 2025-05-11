@@ -1,0 +1,8 @@
+numpy 
+scikit-learn
+pandas 
+seaborn == 0.13.2
+matplotlib == 3.9.2
+streamlit == 1.24.0
+mlflow
+pytest

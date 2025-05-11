@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/530375669080197992
+creation_time: 1725722864765
+experiment_id: '530375669080197992'
+last_update_time: 1725722864765
+lifecycle_stage: active
+name: marn-car-price-prediction
